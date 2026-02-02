@@ -1,0 +1,180 @@
+---
+import { Image } from "astro:assets";
+import Palette from "phosphor-astro/Palette.astro";
+import List from "phosphor-astro/List.astro";
+---
+
+<header
+  class="navbar shadow-sm sticky top-0 z-50 backdrop-blur-xl bg-base-100/80 border-b border-base-200 transition-all duration-300"
+>
+  <div
+    class="max-w-7xl mx-auto w-full px-4 lg:px-8 flex items-center justify-between"
+  >
+    <!-- Logo and brand -->
+    <div class="navbar-start w-auto">
+      <a
+        href="/"
+        class="group flex items-center gap-3 hover:bg-transparent px-2 no-underline"
+      >
+        <div class="relative overflow-hidden rounded-xl w-10 h-10 shadow-md">
+          <Image
+            src="/heartbeat.png"
+            alt="Heartbeat icon"
+            width={48}
+            height={48}
+            format="webp"
+            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+          />
+        </div>
+        <span
+          class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary hidden sm:inline-block tracking-tight"
+        >
+          Rythm Blog
+        </span>
+      </a>
+    </div>
+
+    <!-- Desktop navigation -->
+    <div class="navbar-center hidden lg:flex">
+      <ul class="menu menu-horizontal px-1 gap-2">
+        <li>
+          <a
+            href="/"
+            class="text-sm font-medium hover:bg-base-200 hover:text-primary transition-all duration-200 rounded-lg px-4 py-2 no-underline active:bg-base-300 focus:bg-base-200"
+          >
+            Home
+          </a>
+        </li>
+        <li>
+          <a
+            href="/about"
+            class="text-sm font-medium hover:bg-base-200 hover:text-primary transition-all duration-200 rounded-lg px-4 py-2 no-underline active:bg-base-300 focus:bg-base-200"
+          >
+            About
+          </a>
+        </li>
+        <li>
+          <a
+            href="/blog"
+            class="text-sm font-medium hover:bg-base-200 hover:text-primary transition-all duration-200 rounded-lg px-4 py-2 no-underline active:bg-base-300 focus:bg-base-200"
+          >
+            Blog
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Right side: Theme toggle and Mobile menu -->
+    <div class="navbar-end w-auto flex gap-2">
+      <!-- Theme Toggle -->
+      <div class="dropdown dropdown-end">
+        <div tabindex="0" role="button" class="btn btn-ghost btn-circle btn-sm">
+          <Palette class="w-5 h-5" />
+        </div>
+        <ul
+          tabindex="0"
+          class="dropdown-content z-[1] p-2 shadow-2xl bg-base-300 rounded-box w-52 max-h-96 overflow-y-auto"
+        >
+          <li>
+            <input
+              type="radio"
+              name="theme-dropdown"
+              class="theme-controller btn btn-sm btn-block btn-ghost justify-start"
+              aria-label="Winter"
+              value="winter"
+            />
+          </li>
+          <li>
+            <input
+              type="radio"
+              name="theme-dropdown"
+              class="theme-controller btn btn-sm btn-block btn-ghost justify-start"
+              aria-label="Night"
+              value="night"
+            />
+          </li>
+          <li>
+            <input
+              type="radio"
+              name="theme-dropdown"
+              class="theme-controller btn btn-sm btn-block btn-ghost justify-start"
+              aria-label="Corporate"
+              value="corporate"
+            />
+          </li>
+          <li>
+            <input
+              type="radio"
+              name="theme-dropdown"
+              class="theme-controller btn btn-sm btn-block btn-ghost justify-start"
+              aria-label="Retro"
+              value="retro"
+            />
+          </li>
+          <li>
+            <input
+              type="radio"
+              name="theme-dropdown"
+              class="theme-controller btn btn-sm btn-block btn-ghost justify-start"
+              aria-label="Cyberpunk"
+              value="cyberpunk"
+            />
+          </li>
+          <li>
+            <input
+              type="radio"
+              name="theme-dropdown"
+              class="theme-controller btn btn-sm btn-block btn-ghost justify-start"
+              aria-label="Valentine"
+              value="valentine"
+            />
+          </li>
+          <li>
+            <input
+              type="radio"
+              name="theme-dropdown"
+              class="theme-controller btn btn-sm btn-block btn-ghost justify-start"
+              aria-label="Aqua"
+              value="aqua"
+            />
+          </li>
+        </ul>
+      </div>
+
+      <div class="dropdown dropdown-end lg:hidden">
+        <label tabindex="0" class="btn btn-ghost btn-circle">
+          <List class="h-6 w-6" />
+        </label>
+        <ul
+          tabindex="0"
+          class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow-lg bg-base-100 rounded-box w-52 border border-base-200"
+        >
+          <li>
+            <a
+              href="/"
+              class="text-base font-semibold hover:text-primary no-underline"
+            >
+              Home
+            </a>
+          </li>
+          <li>
+            <a
+              href="/about"
+              class="text-base font-semibold hover:text-primary no-underline"
+            >
+              About
+            </a>
+          </li>
+          <li>
+            <a
+              href="/blog"
+              class="text-base font-semibold hover:text-primary no-underline"
+            >
+              Blog
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,52 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+import Main from "../components/Main.astro";
+import PostList from "../components/PostList.astro";
+import Hero from "../components/Hero.astro";
+import ArrowRight from "phosphor-astro/ArrowRight.astro";
+export const prerender = true;
+
+const posts = await getCollection("posts");
+// Get featured posts (first 6, sorted by date)
+const sortedPosts = posts
+  .sort((a, b) => {
+    const dateA = new Date(a.data.date).getTime();
+    const dateB = new Date(b.data.date).getTime();
+    return dateB - dateA;
+  })
+  .slice(0, 6);
+---
+
+<Layout title="Rythm Nation Blog">
+  <!-- Hero Section -->
+  <Hero />
+
+  <!-- Featured Posts Section -->
+  <Main>
+    <div class="py-16 md:py-24">
+      <div
+        class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4"
+      >
+        <div>
+          <h2 class="text-4xl font-bold text-base-content mb-4 tracking-tight">
+            Latest Articles
+          </h2>
+          <p class="text-lg text-base-content/70 max-w-2xl">
+            Stay updated with our newest content on music production, gear
+            reviews, and industry insights.
+          </p>
+          <!-- <RocketLaunch /> -->
+        </div>
+        <a href="/blog" class="btn btn-ghost group no-underline">
+          View All
+          <ArrowRight
+            class="h-5 w-5 group-hover:translate-x-1 transition-transform"
+          />
+        </a>
+      </div>
+
+      <PostList posts={sortedPosts} />
+    </div>
+  </Main>
+</Layout>

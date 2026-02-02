@@ -1,0 +1,27 @@
+---
+import { getCollection } from "astro:content";
+import H1 from "../components/H1.astro";
+import Main from "../components/Main.astro";
+import Layout from "../layouts/Layout.astro";
+import PostList from "../components/PostList.astro";
+
+const posts = await getCollection("posts");
+// Sort posts by date (newest first)
+const sortedPosts = posts.sort((a, b) => {
+  const dateA = new Date(a.data.date).getTime();
+  const dateB = new Date(b.data.date).getTime();
+  return dateB - dateA;
+});
+---
+
+<Layout title="Blog | Rythm Nation">
+  <Main>
+    <div class="mb-8">
+      <H1 text="Rythm Nation Blog" />
+      <p class="text-lg text-base-content/70 max-w-2xl">
+        Discover insights, tips, and stories from the world of music production and sound engineering.
+      </p>
+    </div>
+    <PostList posts={sortedPosts} />
+  </Main>
+</Layout>
