@@ -59,7 +59,7 @@ const formatDate = (dateString: string) => {
         post.data.image && (
           <figure class="mb-8 rounded-2xl overflow-hidden shadow-2xl">
             <Image
-              src={post.data.image}
+              src={post.data.image.src}
               alt={post.data.title}
               width={1024}
               height={683}
